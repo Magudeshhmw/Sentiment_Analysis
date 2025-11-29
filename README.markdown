@@ -4,6 +4,7 @@
 ![Python](https://img.shields.io/badge/Python-3.8%2B-%2314354C?style=flat-square&logo=python)
 ![Flask](https://img.shields.io/badge/Flask-2.3-%23000000?style=flat-square&logo=flask)
 ![Scikit-Learn](https://img.shields.io/badge/scikit--learn-%23F7931E?style=flat-square&logo=scikit-learn)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-%23000000?style=for-the-badge&logo=vercel&logoColor=white)](https://sentiment-analysis-d8k2qopgp-magudeshhmws-projects.vercel.app/)
 ![License](https://img.shields.io/badge/License-MIT-%23FF5555?style=flat-square)
 
 ---
@@ -34,30 +35,30 @@ The system follows a modular client-server architecture.
 
 ```mermaid
 graph TD
-    subgraph Client [Frontend (Browser)]
-        UI[User Interface (HTML/CSS/JS)]
+    subgraph Client
+        UI[User Interface]
         Input[Text Input]
         Chart[Chart.js Visualization]
     end
 
-    subgraph Server [Backend (Flask)]
-        API[Flask API (/analyze)]
+    subgraph Server
+        API[Flask API /analyze]
         
-        subgraph NLP_Pipeline [NLP Pipeline]
-            Pre[Preprocessing (NLTK)]
+        subgraph NLP_Pipeline
+            Pre[Preprocessing NLTK]
             Vector[TF-IDF Vectorizer]
         end
         
-        subgraph Models [Inference Engine]
-            SVC[LinearSVC Model (Scikit-learn)]
-            VADER[VADER Analyzer (NLTK)]
-            Ensemble[Logic Layer (Hybrid Decision)]
+        subgraph Models
+            SVC[LinearSVC Model]
+            VADER[VADER Analyzer]
+            Ensemble[Logic Layer]
         end
     end
 
     %% Data Flow
     Input -->|1. User enters text| UI
-    UI -->|2. POST Request (JSON)| API
+    UI -->|2. POST Request JSON| API
     API -->|3. Raw Text| Pre
     Pre -->|4. Cleaned Tokens| Vector
     Vector -->|5. Feature Vector| SVC
