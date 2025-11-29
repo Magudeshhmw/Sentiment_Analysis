@@ -14,6 +14,8 @@ Welcome to the **Advanced Sentiment Analysis AI**! 🚀 This project leverages a
 
 The application features a stunning, modern web interface with real-time visualizations, making it not just a tool, but an experience. ✨
 
+![Dashboard Preview](assets/dashboard_preview.png)
+
 ---
 
 ## 🚀 Key Features
