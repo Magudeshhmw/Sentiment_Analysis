@@ -16,13 +16,24 @@ from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 
 # Download required NLTK data
+# Download required NLTK data
+import os
+
+# Set NLTK data path to /tmp for Vercel (read-only file system elsewhere)
+nltk_data_path = os.path.join('/tmp', 'nltk_data')
+if not os.path.exists(nltk_data_path):
+    os.makedirs(nltk_data_path)
+nltk.data.path.append(nltk_data_path)
+
 try:
     nltk.data.find('corpora/movie_reviews')
 except LookupError:
-    nltk.download('movie_reviews')
-    nltk.download('punkt')
-    nltk.download('stopwords')
-    nltk.download('vader_lexicon')
+    print("Downloading NLTK data...")
+    nltk.download('movie_reviews', download_dir=nltk_data_path)
+    nltk.download('punkt', download_dir=nltk_data_path)
+    nltk.download('stopwords', download_dir=nltk_data_path)
+    nltk.download('vader_lexicon', download_dir=nltk_data_path)
+    nltk.download('punkt_tab', download_dir=nltk_data_path)
 
 # Load movie reviews dataset
 def load_data():
